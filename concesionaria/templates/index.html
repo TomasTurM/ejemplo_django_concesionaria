@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block index %}
+    <div class="container">
+            {% for car in autos %}
+                <div class="row">
+                    <div class="card">
+                        <div class="card-content">
+                            <a href="{% url "concesionaria:car_render_url" car.id %}"><span class="card-title">{{ car }}</span></a>
+                            <p>Anio: {{ car.year }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+{% endblock %}

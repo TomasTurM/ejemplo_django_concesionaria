@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block car_registration %}
+    <div class="container">
+        <form action="guardar_auto" method="post" target="_self">
+            {% csrf_token %}
+
+            <div class="input-field col s6">
+                <select name="brand">
+                    {% for brand in brands %}
+                        <option value="{{ brand.0 }}">{{ brand.0 }}</option>
+                    {% endfor %}
+                </select>
+                <label>Marca</label>
+            </div>
+            <br><br><br>
+            Modelo:<br>
+            <input name="model" type="text"><br>
+
+            <div class="input-field col s6">
+                <select name="state">
+                    {% for state in states %}
+                        <option value="{{ state.0 }}">{{ state.0 }}</option>
+                    {% endfor %}
+                </select>
+                <label>Estado</label>
+            </div>
+
+            Anio:<br>
+            <input name="year" type="text"><br>
+
+            <!-- Falta hacer de que si el select es Usado tenga Reparaciones, si es Nuevo no -->
+            {% if state == 'Usado' %}
+
+            {% endif %}
+
+            <h3>Transacciones</h3><br>
+
+            <h4>Compra</h4><br>
+
+            Precio:<br>
+            <input name="payed_price" type="number"><br>
+
+            Fecha:<br>
+            <input name="adq_date" type="date" max=(new Date().toLocalDateString())>
+
+            <h4>Reparaciones</h4><br>
+
+            <!-- Falta hacer que se puedan agregar mas reparaciones -->
+
+            Precio:<br>
+            <input name="repair_price" type="number"><br>
+
+            Fecha:<br>
+            <input name="repair_date" type="date" max=(new Date().toLocalDateString())>
+
+            <h4>Venta</h4><br>
+
+            Precio:<br>
+            <input name="buy_price" type="number"><br>
+
+            <input type="submit" value="Subir Auto">
+
+        </form>
+    </div>
+
+{% endblock %}
